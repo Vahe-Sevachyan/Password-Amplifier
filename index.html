@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>Passwords Generator</li>
+          <li>How it Works</li>
+        </ul>
+      </nav>
+      <h1>Unique Passwords</h1>
+    </header>
+    <main>
+      <div class="formContainer">
+        <form action="">
+          <label for="uniquePhrase" class="phrase-label">Unique Phrase</label>
+          <input type="text" id="uniquePhrase" />
+          <label for="domainName" class="url-Label">Domain Name</label>
+          <input type="text" id="domainName" />
+          <p class="cautionMessage">Caution Message goes here</p>
+          <div>password results</div>
+          <div class="btn-Container">
+            <button type="button" class="generate">Generate Password</button>
+            <button type="button" class="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
