@@ -2,7 +2,8 @@ const phraseInput = document.querySelector("#uniquePhrase");
 const domainInput = document.querySelector("#domainName");
 const generateBtn = document.querySelector(".generate");
 const resetBtn = document.querySelector(".reset");
-
+const cautionMessage = document.querySelector(".cautionMessage");
+const passResult = document.getElementById("pass");
 //regex for empty string or just white space
 function hasWhiteSpace(value) {
   return /^\s*$/.test(value);
@@ -19,7 +20,9 @@ const validate = (phrase, url) => {
     hasWhiteSpace(phrase.value) === true ||
     hasWhiteSpace(url.value) === true
   ) {
-    alert("please enter value");
+    cautionMessage.innerHTML = "Please provide a valid input";
+    cautionMessage.style.color = "red";
+    // alert("please enter value");
   } else if (
     hasWhiteSpace(phrase.value) === false &&
     hasWhiteSpace(url.value) === false
@@ -51,6 +54,7 @@ const stripUrl = (url) => {
 
 //adds numbers to begging and end of string
 const scramble = (phrase, url) => {
+  console.log(phrase, url);
   let passPhrase = phrase.split("").reverse();
   let URL = url.split("").reverse();
   const phraseLength = phrase.length * 7;
@@ -75,10 +79,26 @@ const scramble = (phrase, url) => {
     urlLength,
     "%",
   ].join("");
-  // upperCase(obliterated);
-  console.log(obliterated);
+  document.getElementById("myInput").value = obliterated;
+};
+const copyBtn = document.querySelector(".copyBtn");
+
+copyBtn.onclick = (e) => {
+  e.preventDefault();
+  let copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  alert("Copied the text: " + copyText.value);
 };
 
+// copyBtn.addEventListener("copy", (event) => {
+//   event.preventDefault();
+//   if (event.clipboardData) {
+//     event.clipboardData.setData("text/plain", copyBtn.textContent);
+//     // console.log(event.clipboardData.getData("text"));
+//   }
+// });
 //refactor bottom two reverse functions into one forEach
 // const reverseValues = (url, phrase) => {
 //   const URL = url.split("").reverse().join("");

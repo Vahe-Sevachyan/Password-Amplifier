@@ -1,0 +1,48 @@
+.aboutBody {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #18134d;
+  width: 50%;
+  margin: auto;
+}
+.aboutH1 {
+  font-size: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+.aboutP {
+  font-size: 2rem;
+  color: #fff;
+  width: 75%;
+  margin-bottom: 3rem;
+}
+.aboutUL {
+  font-size: 2rem;
+  color: rgb(209, 193, 193);
+  width: 62%;
+}
+.aboutLI {
+  margin-bottom: 2rem;
+}
+.AboutNav {
+  list-style: none;
+  display: flex;
+  min-width: 13rem;
+  justify-content: space-between;
+  // margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 8rem;
+  color: #fff;
+  font-size: 2rem;
+}
+.AboutNav li {
+  border-bottom: 1.5px solid #18134d;
+}
+.AboutNav li:hover {
+  border-bottom: whitesmoke 1.5px solid;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}

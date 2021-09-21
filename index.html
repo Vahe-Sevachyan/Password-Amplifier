@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-
-    <title>Password Buddy</title>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>Password Amplifier</title>
   </head>
   <body>
     <nav class="navContainer">
       <ul class="navItems">
-        <li>Passwords Generator</li>
-        <li>About</li>
-        <li>How it Works</li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </nav>
     <!-- <div> -->
@@ -30,15 +33,21 @@
       <div class="cautionMessageContainer">
         <h3 class="cautionHeader">Caution Message</h3>
         <p class="cautionMessage">
-          Caution Message goes here Caution Message goes here Caution Message
-          goes
+          <!-- Caution Message goes here Caution Message goes here Caution Message
+          goes -->
         </p>
       </div>
 
       <div class="passResultsContainer">
         <h3 class="passHeader">Password Results</h3>
         <div class="passResult">
-          password results password results password results password results
+          <input type="text" value="" id="myInput" />
+          <button class="copyBtn">
+            Copy
+            <i class="far fa-copy"></i>
+          </button>
+
+          <!-- Password results password results password results password results -->
         </div>
       </div>
       <div class="btn-Container">
@@ -47,7 +56,12 @@
       </div>
     </form>
     <!-- </div> -->
-
+    <h4 class="footerHeader">
+      Developed by
+      <a href="https://www.vahe.tech/" target="_blank" class="linktoPortfolio"
+        >Vahe Gharagiozyan</a
+      >
+    </h4>
     <script src="script.js"></script>
   </body>
 </html>
