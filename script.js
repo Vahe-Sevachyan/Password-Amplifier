@@ -1,9 +1,12 @@
 const phraseInput = document.querySelector("#uniquePhrase");
 const domainInput = document.querySelector("#domainName");
 const generateBtn = document.querySelector(".generate");
+const reset = document.querySelector(".reset");
 const resetBtn = document.querySelector(".reset");
 const cautionMessage = document.querySelector(".cautionMessage");
 const passResult = document.getElementById("pass");
+const input = document.querySelector("#myInput");
+const copyBtn = document.querySelector(".copyBtn");
 //regex for empty string or just white space
 function hasWhiteSpace(value) {
   return /^\s*$/.test(value);
@@ -30,7 +33,6 @@ const validate = (phrase, url) => {
     trim(phrase, domainInput);
   }
 };
-
 //trims down any white space
 const trim = (phrase, url) => {
   const secretPhrase = phrase.value.replace(/ /g, "");
@@ -42,9 +44,7 @@ const lowerCase = (phrase, url) => {
   const secretPhrase = phrase.toLowerCase();
   let urlValue = url.toLowerCase();
   scramble(secretPhrase, stripUrl(urlValue));
-  // domainCheck(secretPhrase, urlValue);
 };
-//add a display message informing the user which domain was provided but which part of was used and for future reference they can only use strip down version.
 
 //strips down url
 const stripUrl = (url) => {
@@ -54,19 +54,22 @@ const stripUrl = (url) => {
 
 //adds numbers to begging and end of string
 const scramble = (phrase, url) => {
-  console.log(phrase, url);
+  cautionMsg(phrase, url);
   let passPhrase = phrase.split("").reverse();
   let URL = url.split("").reverse();
   const phraseLength = phrase.length * 7;
   const urlLength = url.length * 11;
   const combinedLength = urlLength * phraseLength;
   let phraseIndex0 = passPhrase[0];
-  // URL[0] = phraseIndex0.toUpperCase();
   URL[1] = phraseIndex0.toUpperCase();
   let urlLastIndex = URL[URL.length - 1];
-  // let urlSecLastIndex = URL[URL.length - 2];
   passPhrase[0] = urlLastIndex.toUpperCase();
-  // passPhrase[1] = urlSecLastIndex.toLowerCase();
+  if (passPhrase.length > 2 && URL.length > 2) {
+    passPhrase[2] = URL[1];
+    passPhrase[1] = URL[2];
+    URL[URL.length - 1] = passPhrase[passPhrase.length - 1];
+    URL[URL.length - 2] = passPhrase[passPhrase.length - 2];
+  }
   let obliterated = [
     phraseLength,
     "$",
@@ -81,17 +84,27 @@ const scramble = (phrase, url) => {
   ].join("");
   document.getElementById("myInput").value = obliterated;
 };
-const copyBtn = document.querySelector(".copyBtn");
+
+const cautionMsg = (pass, url) => {
+  cautionMessage.style.color = "white";
+  cautionMessage.innerHTML = `Your password is based the values {${pass}} and {${url}}.
+  To get the same results use those same exact values.`;
+};
 
 copyBtn.onclick = (e) => {
   e.preventDefault();
-  let copyText = document.getElementById("myInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
-  alert("Copied the text: " + copyText.value);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+  alert("Copied: " + input.value);
 };
 
+reset.onclick = () => {
+  input.value = null;
+  phraseInput.value = null;
+  domainInput.value = null;
+  cautionMessage.innerHTML = "";
+};
 // copyBtn.addEventListener("copy", (event) => {
 //   event.preventDefault();
 //   if (event.clipboardData) {

@@ -32,7 +32,6 @@
   display: flex;
   min-width: 13rem;
   justify-content: space-between;
-  // margin: auto;
   margin-top: 3rem;
   margin-bottom: 8rem;
   color: #fff;
@@ -45,4 +44,36 @@
   border-bottom: whitesmoke 1.5px solid;
   cursor: pointer;
   transition: ease-in-out 0.3s;
+}
+.aboutUL {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 1200px) {
+  .aboutBody {
+    width: 80vw;
+  }
+  .aboutP {
+    font-size: 1.4rem;
+  }
+  .aboutUL {
+    font-size: 1.5rem;
+  }
+  .aboutH1 {
+    font-size: 2.3rem;
+  }
+}
+@media (max-width: 530px) {
+  .aboutBody {
+    width: 100vw;
+  }
+  .aboutH1 {
+    font-size: 1.7rem;
+  }
+  .aboutP {
+    font-size: 1.2rem;
+  }
+  .aboutUL {
+    font-size: 1.1rem;
+  }
 }
